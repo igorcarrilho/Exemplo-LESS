@@ -1,0 +1,89 @@
+@cor: blue;
+@cor2: red;
+@cor3: green;
+@widith: 1;
+@cor_cinza_claro: rgb(210.212.208);
+@tamanho: 25px;
+
+.drop-shadow(){
+    text-shadow: 2px 1px 1px #ccc;
+    text-decoration: underline;
+}
+
+body {
+    background-color: @cor_cinza_claro;
+    width: percentage(@widith);
+    margin-left: 10%;
+}
+
+.drop-shadow1(@color, @backgroundColor: rgb(139,74, 125)){
+    & when (@color = ''){
+        color: rgb(165,33,0);
+    }else{
+        color: @color;
+    }
+    text-shadow: 2px 1px 1px #ccc;
+    text-decoration: underline;
+    background-color: @backgroundColor;
+}
+
+h1 {
+    .drop-shadow();
+    color: @cor2;
+}
+
+h2{
+    .drop-shadow1('', #FFF);
+}
+
+p {
+    .cores('p');
+    width: percentage(@widith);
+    font-size: 23px;
+    b{
+        color: @cor2;
+    }
+}
+
+b {
+    color: @cor2 - rgb(50,50,50);
+}
+
+#div-1{
+    font-size: @tamanho;
+    color: @cor3
+}
+
+#div-2{
+    font-size: @tamanho+5;
+    color: @cor3+12;
+}
+
+#div-3{
+    font-size: @tamanho+10;
+    color: @cor3+15;
+}
+
+.cores(@tag){
+    color: @cor*0.8;
+    font-size: @tamanho;
+    & when (@tag = 'h1'){
+        text-shadow: 2px 1px 1px #7a7b7c;
+        font-size: @tamanho*1.23;
+    }
+    & when (@tag = 'p'){
+        background-color: lightgreen;
+        font-size: @tamanho*1.23;
+    }
+}
+
+a.button:link, a.button:visited, a {
+    background-color: #f44336;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: wavy;
+    font-weight: bold;
+    display: inline-flex;
+    width: 20%;
+}
